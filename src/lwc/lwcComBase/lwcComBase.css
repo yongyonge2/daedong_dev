@@ -1,0 +1,10 @@
+.THIS {
+}
+
+.hide-title > header.slds-card__header {
+    display: none;
+}
+
+.toastMessage.forceActionsText{
+    white-space : pre-line !important;
+}

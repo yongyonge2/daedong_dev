@@ -1,0 +1,69 @@
+<!--
+ - Created by lkj on 2022-06-27.
+ -->
+
+<!-- Lwc Modal Notification -->
+<template>
+    <!--
+
+    ----------------------------------------------------------------------
+    'lightning'의 Alert, confirm, prompt을 호출합니다.
+    ----------------------------------------------------------------------
+
+    -->
+    <lightning-card title="알림(Alert, Confirm, Prompt)" icon-name="custom:custom19">
+        <div class="slds-p-around_medium">
+            <div class="slds-box slds-box_x-small">
+                <p class="slds-m-bottom_small">
+                    Use LightningAlert instead of window.alert()
+                </p>
+                <lightning-button
+                        onclick={handleAlertClick}
+                        label="Alert Modal 호출"
+                        class="alertButton"
+                >
+                </lightning-button>
+            </div>
+            <div class="slds-box slds-box_x-small slds-m-top_small">
+                <p class="slds-m-bottom_small">
+                    Use LightningConfirm instead of window.confirm()
+                </p>
+                <lightning-button
+                        onclick={handleConfirmClick}
+                        label="Confirm Modal 호출"
+                        class="confirmButton"
+                >
+                </lightning-button>
+                <p class="slds-m-top_small confirmResult">
+                    Confirm Status: {confirmStatus}
+                </p>
+            </div>
+
+            <div class="slds-box slds-box_x-small slds-m-top_small">
+                <p class="slds-m-bottom_small">
+                    Use LightningPrompt instead of window.prompt()
+                </p>
+                <lightning-button
+                        onclick={handlePromptClick}
+                        label="Prompt Modal 호출"
+                        class="promptButton"
+                >
+                </lightning-button>
+                <p class="slds-m-top_small promptResult">
+                    Entered value is: {promptValue}
+                </p>
+            </div>
+        </div>
+        <c-view-source source="lwc/lwcModalNotification" slot="footer">
+            <p>
+                <a class="slds-text-link" href="https://developer.salesforce.com/docs/component-library/documentation/en/lwc/lwc.use_dialog_alert" target="source">#Alert</a>
+            </p>
+            <p>
+                <a class="slds-text-link" href="https://developer.salesforce.com/docs/component-library/documentation/en/lwc/lwc.use_dialog_confirm" target="source">#Confirm</a>
+            </p>
+            <p>
+                <a class="slds-text-link" href="https://developer.salesforce.com/docs/component-library/documentation/en/lwc/lwc.use_dialog_prompt" target="source">#Prompt</a>
+            </p>
+        </c-view-source>
+    </lightning-card>
+</template>

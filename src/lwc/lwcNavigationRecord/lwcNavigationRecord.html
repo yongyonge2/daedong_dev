@@ -1,0 +1,48 @@
+<!--
+ - Created by lkj on 2022-06-27.
+ -->
+
+<!-- Lwc Navigation Record -->
+<template>
+    <!--
+
+    ----------------------------------------------------------------------
+    'NavigationMixin'을 사용하여 설정한 화면으로 이동합니다.
+      ※ lwcComBase.js 참조필요.
+    ----------------------------------------------------------------------
+
+    -->
+    <lightning-card title="화면 이동(Record)" icon-name="custom:custom96">
+        <div class="slds-var-m-around_medium">
+            <p class="slds-var-m-bottom_small">
+                <lightning-button
+                        label="RecordPage 호출"
+                        onclick={navigationRecordPage}>
+                </lightning-button>
+            </p>
+            <lightning-combobox
+                    name="ActionName"
+                    label="Action"
+                    value={actionName}
+                    placeholder="Select Action"
+                    options={options}
+                    onchange={handleActionChange}>
+            </lightning-combobox>
+            <lightning-input
+                    label="RecordId"
+                    type="text"
+                    value={recordId}
+                    class="header-jest"
+                    onchange={handleRecordIdChange}>
+            </lightning-input>
+        </div>
+        <c-view-source source="lwc/lwcNavigationRecord" slot="footer">
+            <p>
+                <a class="slds-text-link" href="https://developer.salesforce.com/docs/component-library/bundle/lightning-combobox/documentation" target="source">#lightning-combobox</a>
+            </p>
+            <p>
+                <a class="slds-text-link" href="https://developer.salesforce.com/docs/component-library/bundle/lightning-navigation/documentation" target="source">#NavigationMixin</a>
+            </p>
+        </c-view-source>
+    </lightning-card>
+</template>

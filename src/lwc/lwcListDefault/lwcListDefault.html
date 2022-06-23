@@ -1,0 +1,38 @@
+<!--
+ - Created by lkj on 2022-06-27.
+ -->
+
+<!-- Lwc List Default -->
+<template>
+    <!--
+
+    ----------------------------------------------------------------------
+    <template if> 를 통해 데이터 유무 또는 boolean 상태를 판단할 수 있습니다.
+    'forEach'를 통해 Array의 데이터를 추출할 수 있습니다.
+    ----------------------------------------------------------------------
+
+    -->
+    <lightning-card title="목록 조회" icon-name="custom:custom62">
+        <div class="slds-var-m-around_medium">
+            <p class="slds-var-m-bottom_small">
+                <lightning-button
+                        label="조회"
+                        onclick={handleLoad}>
+                </lightning-button>
+            </p>
+            <template if:true={leads}>
+                <template for:each={leads} for:item="lead">
+                    <p key={lead.Id}>{lead.Name}</p>
+                </template>
+            </template>
+        </div>
+        <c-view-source source="lwc/lwcListDefault" slot="footer">
+            <p>
+                <a class="slds-text-link" href="https://developer.salesforce.com/docs/component-library/documentation/en/lwc/create_conditional" target="source">#conditional</a>
+            </p>
+            <p>
+                <a class="slds-text-link" href="https://developer.salesforce.com/docs/component-library/documentation/en/lwc/create_lists" target="source">#for:each</a>
+            </p>
+        </c-view-source>
+    </lightning-card>
+</template>

@@ -1,0 +1,36 @@
+<!--
+ - Created by lkj on 2022-06-27.
+ -->
+
+<!-- Lwc Navigation Object -->
+<template>
+    <!--
+
+    ----------------------------------------------------------------------
+    'NavigationMixin'을 사용하여 설정한 화면으로 이동합니다.
+      ※ lwcComBase.js 참조필요.
+    ----------------------------------------------------------------------
+
+    -->
+    <lightning-card title="화면 이동(Object)" icon-name="custom:custom96">
+        <div class="slds-var-m-around_medium">
+            <p class="slds-var-m-bottom_small">
+                <lightning-button
+                        label="ObjectPage(신규생성) 호출"
+                        onclick={navigationObjectNew}>
+                </lightning-button>
+            </p>
+            <p class="slds-var-m-bottom_small">
+                <lightning-button
+                        label="ObjectPage(목록조회) 호출"
+                        onclick={navigationObjectList}>
+                </lightning-button>
+            </p>
+        </div>
+        <c-view-source source="lwc/lwcNavigationObject" slot="footer">
+            <p>
+                <a class="slds-text-link" href="https://developer.salesforce.com/docs/component-library/bundle/lightning-navigation/documentation" target="source">#NavigationMixin</a>
+            </p>
+        </c-view-source>
+    </lightning-card>
+</template>

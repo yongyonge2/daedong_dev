@@ -1,0 +1,15 @@
+<!--
+ - Created by lkj on 2022-06-21.
+ -->
+
+<template>
+    <div class="slds-is-relative">
+        <template if:true={isSpinner}>
+            <lightning-spinner alternative-text="Loading" variant="brand" size="middle">
+            </lightning-spinner>
+        </template>
+        <slot name="baseHeader"></slot>
+        <slot name="baseBody"></slot>
+        <slot name="baseFooter"></slot>
+    </div>
+</template>

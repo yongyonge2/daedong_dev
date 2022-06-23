@@ -1,0 +1,23 @@
+<!--
+ - Created by lkj on 2022-06-21.
+ -->
+
+<!-- Lwc Com Section Frame -->
+<template>
+    <template if:true={hasHeader}>
+        <h3 class="slds-section__title slds-theme_shade">
+            <span class="slds-truncate slds-m-left_small" title="Section Title">{title}</span>
+        </h3>
+    </template>
+    <div class="slds-grid">
+        <div class="slds-col slds-has-flexi-truncate slds-grid">
+            <fieldset class="slds-form-element slds-form_compound slds-is-editing">
+                <div class="slds-form-element__control">
+                    <div class="slds-form-element__group">
+                        <slot name="sectionComponent"></slot>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+</template>
