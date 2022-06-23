@@ -1,0 +1,66 @@
+<!--
+ - Created by lkj on 2022-06-27.
+ -->
+
+<!-- Lwc Modal Quick Action -->
+<template>
+    <!--
+
+    ----------------------------------------------------------------------
+    <section>을 사용하여 QuickAction(Modal)를 구성합니다.
+    'lwcComQuick'의 slot을 기준으로 각 Header, Content, Footer의 영역을 조정합니다.
+      ※ lwcComQuick.html 참조필요.
+    ----------------------------------------------------------------------
+
+    -->
+    <lightning-card title="Quick Action" icon-name="custom:custom19">
+        <div class="slds-var-m-around_medium">
+            <lightning-input
+                    label="제목"
+                    type="text"
+                    value={header}
+                    class="header-jest"
+                    onchange={handleHeaderChange}></lightning-input>
+            <br />
+            <lightning-button
+                    label="Quick Action 호출"
+                    onclick={handleShowModal}>
+            </lightning-button>
+
+            <c-lwc-com-quick header={header}>
+                <div slot="header"></div>
+                <div class="slds-var-m-around_medium">
+                    <lightning-record-edit-form object-api-name="Lead" onsuccess={handleSuccess}>
+                        <lightning-input-field field-name="Name"></lightning-input-field>
+                        <lightning-input-field required field-name="Title"></lightning-input-field>
+                        <lightning-input-field field-name="Company"></lightning-input-field>
+                        <lightning-input-field field-name="Phone"></lightning-input-field>
+                        <lightning-input-field field-name="MobilePhone"></lightning-input-field>
+                        <lightning-input-field field-name="Email"></lightning-input-field>
+                        <lightning-input-field field-name="Status"></lightning-input-field>
+                    </lightning-record-edit-form>
+                </div>
+                <div slot="footer">
+                    <lightning-button
+                            variant="brand"
+                            onclick={handleSubmit}
+                            label="생성">
+                    </lightning-button>
+                    <lightning-button
+                            label="닫기"
+                            variant="neutral"
+                            onclick={handleCloseModal}>
+                    </lightning-button>
+                </div>
+            </c-lwc-com-quick>
+            <c-view-source source="lwc/lwcModalQuickAction" slot="footer">
+                <p>
+                    <a class="slds-text-link" href="https://www.sfdcpoint.com/salesforce/modal-popup-lightning-web-component-lwc/" target="source">#section</a>
+                </p>
+                <p>
+                    <a class="slds-text-link" href="https://developer.salesforce.com/docs/component-library/documentation/en/lwc/lwc.create_components_slots" target="source">#slot</a>
+                </p>
+            </c-view-source>
+        </div>
+    </lightning-card>
+</template>

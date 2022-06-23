@@ -1,0 +1,49 @@
+<!--
+ - Created by lkj on 2022-06-27.
+ -->
+
+<!-- Lwc Create Default -->
+
+<template>
+    <!--
+
+    ----------------------------------------------------------------------
+    <record-edit-form>을 사용하여 신규,수정 Form을 구성합니다.
+    <record-edit-form>의 'object-api-name' 속성으로 Object를 지정합니다.
+    <input-field>의 'field-name'을 기준으로 해당 Object의 field 속성을 따라갑니다.
+    ----------------------------------------------------------------------
+
+    -->
+    <lightning-card title="신규 생성" icon-name="custom:custom62">
+        <div class="slds-var-m-around_medium">
+            <lightning-record-edit-form object-api-name="Lead" onsuccess={handleSuccess}>
+                <lightning-input-field field-name="Name"></lightning-input-field>
+                <lightning-input-field required field-name="Title"></lightning-input-field>
+                <lightning-input-field field-name="Company"></lightning-input-field>
+                <lightning-input-field field-name="Phone"></lightning-input-field>
+                <lightning-input-field field-name="MobilePhone"></lightning-input-field>
+                <lightning-input-field field-name="Email"></lightning-input-field>
+                <lightning-input-field field-name="Status"></lightning-input-field>
+                <p class="slds-var-m-vertical_small">
+                    <lightning-button
+                            variant="brand"
+                            type="submit"
+                            name="save"
+                            label="생성">
+                    </lightning-button>
+                </p>
+            </lightning-record-edit-form>
+        </div>
+        <c-view-source source="lwc/lwcCreateDefault" slot="footer">
+            <p>
+                <a class="slds-text-link" href="https://developer.salesforce.com/docs/component-library/bundle/lightning-record-edit-form/documentation" target="source">#record-edit-form</a>
+            </p>
+            <p>
+                <a class="slds-text-link" href="https://developer.salesforce.com/docs/component-library/bundle/lightning-input-field/documentation" target="source">#input-field</a>
+            </p>
+            <p>
+                <a class="slds-text-link" href="https://developer.salesforce.com/docs/component-library/bundle/lightning-button/documentation" target="source">#button</a>
+            </p>
+        </c-view-source>
+    </lightning-card>
+</template>

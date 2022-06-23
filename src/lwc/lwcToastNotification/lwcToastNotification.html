@@ -1,0 +1,48 @@
+<!--
+ - Created by lkj on 2022-06-24.
+ -->
+
+<!-- Lwc Toast Notification -->
+<template>
+    <!--
+
+    ----------------------------------------------------------------------
+    'ShowToastEvent'을 사용하여 Toast 이벤트를 호출합니다.
+      ※ lwcComBase.js 참조필요.
+    ----------------------------------------------------------------------
+
+    -->
+    <lightning-card title="알림(Toast)" icon-name="custom:custom19">
+        <div class="slds-var-m-around_medium">
+            <lightning-input
+                    label="Title"
+                    value={titleText}
+                    data-id="titleInput"
+                    onchange={titleChange}>
+            </lightning-input>
+            <lightning-input
+                    label="Message"
+                    value={messageText}
+                    data-id="messageInput"
+                    onchange={messageChange}>
+            </lightning-input>
+            <lightning-combobox
+                    label="Variant"
+                    value={variant}
+                    onchange={variantChange}
+                    options={variantOptions}>
+            </lightning-combobox>
+            <p class="slds-var-m-vertical_small">
+                <lightning-button
+                        label="Notification 호출"
+                        onclick={showNotification}>
+                </lightning-button>
+            </p>
+        </div>
+        <c-view-source source="lwc/lwcToastNotification" slot="footer">
+            <p>
+                <a class="slds-text-link" href="https://developer.salesforce.com/docs/component-library/bundle/lightning-platform-show-toast-event/documentation" target="source">#ShowToastEvent</a>
+            </p>
+        </c-view-source>
+    </lightning-card>
+</template>

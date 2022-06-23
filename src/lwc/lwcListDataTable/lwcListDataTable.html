@@ -1,0 +1,33 @@
+<!--
+ - Created by lkj on 2022-06-27.
+ -->
+
+<!-- Lwc List Data Table -->
+<template>
+    <!--
+
+    ----------------------------------------------------------------------
+    <datatable>을 사용하여 listView를 구성합니다.
+    <datatable>의 'columns'의 속성을 기준으로 헤더를 표시합니다.
+    <datatable>의 'data'의 속성을 기준으로 목록을 표시합니다.
+    ----------------------------------------------------------------------
+
+    -->
+    <lightning-card title="목록 조회(datatable)" icon-name="custom:custom62">
+        <div class="slds-var-m-around_medium">
+            <template if:true={leads}>
+                <lightning-datatable
+                        key-field="Id"
+                        data={leads}
+                        columns={columns}
+                        hide-checkbox-column>
+                </lightning-datatable>
+            </template>
+        </div>
+        <c-view-source source="lwc/lwcListDataTable" slot="footer">
+            <p>
+                <a class="slds-text-link" href="https://developer.salesforce.com/docs/component-library/bundle/lightning-datatable/documentation" target="source">#datatable</a>
+            </p>
+        </c-view-source>
+    </lightning-card>
+</template>

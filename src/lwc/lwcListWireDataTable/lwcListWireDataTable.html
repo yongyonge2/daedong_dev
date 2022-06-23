@@ -1,0 +1,38 @@
+<!--
+ - Created by lkj on 2022-06-27.
+ -->
+
+<!-- Lwc List Wire Data Table -->
+<template>
+    <!--
+
+    ----------------------------------------------------------------------
+    '@wire'을 통하여 'searchKey'의 변화에 따라 렌더링 됩니다.
+    ----------------------------------------------------------------------
+
+    -->
+    <lightning-card title="목록 조회(datatable with wire)" icon-name="custom:custom62">
+        <div class="slds-var-m-around_medium">
+            <lightning-input
+                    type="search"
+                    onchange={handleKeyChange}
+                    class="slds-var-m-bottom_small"
+                    label="Search"
+                    value={searchKey}>
+            </lightning-input>
+            <template if:true={leads}>
+                <lightning-datatable
+                        key-field="Id"
+                        data={leads}
+                        columns={columns}
+                        hide-checkbox-column>
+                </lightning-datatable>
+            </template>
+        </div>
+        <c-view-source source="lwc/lwcListWireDataTable" slot="footer">
+            <p>
+                <a class="slds-text-link" href="https://developer.salesforce.com/docs/component-library/documentation/en/lwc/lwc.data_wire_service_about" target="source">#wire</a>
+            </p>
+        </c-view-source>
+    </lightning-card>
+</template>

@@ -1,0 +1,43 @@
+<!--
+ - Created by lkj on 2022-06-24.
+ -->
+
+<!-- Lwc Spinner -->
+<template>
+    <!--
+
+    ----------------------------------------------------------------------
+    '<lightning-spinner>'를 통하여 화면 로딩(Spinner)를 구성합니다.
+    'lwcComBase.html'의 'isSpinner'를 api로 지정함으로 'Child_Component'에 value를 전달 할 수 있습니다.
+      ※ lwcComBase.html 참조필요.
+    ----------------------------------------------------------------------
+
+    -->
+    <lightning-card title="화면 로딩(Spinner)" icon-name="custom:custom96">
+        <div class="slds-var-m-around_medium">
+            <c-lwc-com-base is-spinner={isSpinner}></c-lwc-com-base>
+
+            <p class="slds-var-m-vertical_small">
+                <lightning-button
+                        label="Spinner 호출"
+                        onclick={doShowSpinner}>
+                </lightning-button>
+            </p>
+
+            <p class="slds-var-m-vertical_small">
+                <lightning-button
+                        label="Spinner 종료"
+                        onclick={doHideSpinner}>
+                </lightning-button>
+            </p>
+        </div>
+        <c-view-source source="lwc/lwcSpinner" slot="footer">
+            <p>
+                <a class="slds-text-link" href="https://developer.salesforce.com/docs/component-library/bundle/lightning-spinner/documentation" target="source">#lightning-spinner</a>
+            </p>
+            <p>
+                <a class="slds-text-link" href="https://developer.salesforce.com/docs/component-library/documentation/en/lwc/reference_decorators" target="source">#api</a>
+            </p>
+        </c-view-source>
+    </lightning-card>
+</template>
