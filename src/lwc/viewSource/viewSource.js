@@ -2,7 +2,7 @@ import { LightningElement, api } from 'lwc';
 
 export default class ViewSource extends LightningElement {
     baseURL =
-        'https://github.com/Lee-Kijung/CommonLwc/tree/master/src/';
+        'https://github.com/i2maxjieun/daedong_dev/tree/master/src/';
 
     @api source;
 

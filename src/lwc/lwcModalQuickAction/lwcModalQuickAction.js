@@ -28,7 +28,7 @@ export default class LwcModalQuickAction extends LwcComBase {
     }
 
     handleSuccess(event){
-        this.doToastNotification('Success', event.detail.apiName + ' 생성 완료.', 'success');
+        this.gfn_ToastNotification('Success', event.detail.apiName + ' 생성 완료.', 'success');
         this.handleCloseModal();
     }
 }

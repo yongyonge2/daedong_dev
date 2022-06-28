@@ -3,11 +3,11 @@
  */
 
 import {LightningElement, api} from 'lwc';
-import LwcComBase from "c/lwcComBase";
 const CSS_CLASS = 'modal-hidden';
 
-export default class LwcComQuick extends LwcComBase {
-    showModal = false;
+export default class LwcComQuick extends LightningElement {
+    @api showModal = false;
+
     @api
     set header(value) {
         this.hasHeaderString = value !== '';

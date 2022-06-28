@@ -6,7 +6,7 @@ import LwcComBase from "c/lwcComBase";
 
 export default class LwcNavigationTab extends LwcComBase {
     navigationNamedPage() {
-        this.doNaviService({
+        this.gfn_NaviService({
             type: 'standard__namedPage',
             attributes: {
                 pageName: 'chatter'
@@ -15,10 +15,10 @@ export default class LwcNavigationTab extends LwcComBase {
     }
 
     navigationNavItemPage() {
-        this.doNaviService({
+        this.gfn_NaviService({
             type: 'standard__navItemPage',
             attributes: {
-                apiName: 'FlexiPage'
+                apiName: 'Quick_Action'
             }
         });
     }

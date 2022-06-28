@@ -27,6 +27,6 @@ export default class LwcToastNotification extends LwcComBase {
         this.variant = event.target.value;
     }
     showNotification(){
-        this.doToastNotification(this.titleText, this.messageText, this.variant);
+        this.gfn_ToastNotification(this.titleText, this.messageText, this.variant);
     }
 }

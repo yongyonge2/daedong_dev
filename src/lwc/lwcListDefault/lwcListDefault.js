@@ -14,7 +14,7 @@ export default class LwcListDefault extends LwcComBase {
                 this.leads = data;
             })
             .catch(error => {
-                this.doApexErrorHandle(error);
+                this.gfn_ApexErrorHandle(error);
             });
     }
 }

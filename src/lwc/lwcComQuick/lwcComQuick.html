@@ -20,7 +20,6 @@
                             icon-name="utility:close"
                             icon-class="slds-button_icon-inverse"
                             onclick={handleDialogClose}>
-
                     </lightning-button-icon>
 
                     <template if:true={hasHeaderString}>
@@ -29,9 +28,6 @@
                         </h2>
                     </template>
                     <template if:false={hasHeaderString}>
-                        <!-- If you don't set the header public property, make sure to
-                            pass in some content into the header slot, so that the component
-                            is accessible, as empty headings are considered not accessible. -->
                         <h2 class="slds-text-heading_medium slds-hyphenate header-slot">
                             <slot name="header"></slot>
                         </h2>
@@ -42,7 +38,7 @@
                     </p>
                 </header>
                 <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
-                    <slot></slot>
+                    <slot name="content"></slot>
                 </div>
 
                 <footer class="slds-modal__footer modal-hidden">

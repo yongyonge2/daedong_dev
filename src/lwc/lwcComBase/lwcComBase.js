@@ -9,6 +9,9 @@ import FORM_FACTOR from '@salesforce/client/formFactor';
 
 
 import getSobjectData from '@salesforce/apex/LwcComService.getSobjectData';
+import LightningAlert from 'lightning/alert';
+import LightningConfirm from 'lightning/confirm';
+import LightningPrompt from 'lightning/prompt';
 
 export default class LwcComBase extends NavigationMixin(LightningElement) {
 
@@ -22,7 +25,7 @@ export default class LwcComBase extends NavigationMixin(LightningElement) {
     @track initData = {};
     @track reqData = {};
     @track resData = {};
-    @track recordList = {};
+    @api recordList = {};
 
     // Spinner 처리
     @api isSpinner = false;
@@ -30,19 +33,19 @@ export default class LwcComBase extends NavigationMixin(LightningElement) {
     @track labelMap = {};
 
     connectedCallback() {
-        this.doInit();
+        this.init();
     }
 
-    doInit() {
-        this.isCommunity = this.doIsCommunitySite();
+    init() {
+        this.isCommunity = this.gfn_IsCommunitySite();
     }
 
-    doIsCommunitySite() {
+    gfn_IsCommunitySite() {
         return new RegExp("/s/").test(window.location.toString());
     }
 
 
-    doApexErrorHandle(error) {
+    gfn_ApexErrorHandle(error) {
         let errors = Array.isArray(error) || [error];
         let errorMessages = errors.filter(error => !!error).map(function(error) {
             // UI API read errors
@@ -65,7 +68,7 @@ export default class LwcComBase extends NavigationMixin(LightningElement) {
         // log 처리와 toast 처리
         //============================================================================
         console.error(toastErrorMessage);
-        this.doToast('Error', toastErrorMessage, 'e');
+        this.gfn_ToastNotification('Error', toastErrorMessage, 'e');
     }
 
     /**
@@ -76,7 +79,7 @@ export default class LwcComBase extends NavigationMixin(LightningElement) {
      * @param mode
      */
 
-    doToastNotification(title, msg, type){
+    gfn_ToastNotification(title, msg, type){
         const evt = new ShowToastEvent({
             title   : title,
             message : msg,
@@ -88,17 +91,46 @@ export default class LwcComBase extends NavigationMixin(LightningElement) {
     /**
      * spinner Show
      */
-    doShowSpinner(){
+    gfn_ShowSpinner(){
         this.isSpinner = true;
     }
 
     /**
      * spinner Hide
      */
-    doHideSpinner(){
+    gfn_HideSpinner(){
         this.isSpinner = false;
     }
 
+    gfn_Alert(label, message, theme) {
+        LightningAlert.open({
+            message: message,
+            theme: theme,
+            label: label
+        });
+    }
+
+    async gfn_Confirm(label, message, variant) {
+        return await LightningConfirm.open({
+            message: message,
+            variant: variant,
+            label: label
+        });
+    }
+
+    async gfn_Prompt(label, message, defaultValue, theme) {
+        return LightningPrompt.open({
+            message: message,
+            label: label,
+            defaultValue: defaultValue,
+            theme: theme
+        });
+    }
+
+    gfn_ShowModal(modalId){
+        const modal = this.template.querySelector('[data-id='+modalId+']');
+        modal.show();
+    }
 
     /**************************************************** ***********************************************************/
 
@@ -118,24 +150,24 @@ export default class LwcComBase extends NavigationMixin(LightningElement) {
      * @param helper
      */
 
-    async doGetSobjectData(targetObjectList){
+    async gfn_GetSobjectData(targetObjectList){
         await getSobjectData({'targetObjectList': targetObjectList})
             .then(result => {
                 this.labelMap = result;
             })
             .catch(error => {
-                this.doApexErrorHandle(error);
+                this.gfn_ApexErrorHandle(error);
             });
     }
 
-    doNaviService(params) {
+    gfn_NaviService(params) {
         this[NavigationMixin.Navigate](params);
     }
 
     /**************************************************** ***********************************************************/
 
 
-    isEmpty(value) {
+    gfn_isEmpty(value) {
         if (value === undefined || value === null || value === "") {
             return true;
         }

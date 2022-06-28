@@ -27,7 +27,7 @@ export default class LwcListWireDataTable extends LwcComBase {
         if(data){
             this.leads = data;
         }else if(error){
-            this.doApexErrorHandle(error);
+            this.gfn_ApexErrorHandle(error);
         }
     };
 

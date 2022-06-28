@@ -22,7 +22,7 @@ export default class LwcNavigationRecord extends LwcComBase {
     }
 
     navigationRecordPage() {
-        this.doNaviService({
+        this.gfn_NaviService({
             type: "standard__recordPage",
             attributes: {
                 recordId: this.recordId,

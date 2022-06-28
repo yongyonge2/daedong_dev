@@ -6,7 +6,7 @@ import LwcComBase from "c/lwcComBase";
 
 export default class LwcNavigationObject extends LwcComBase {
     navigationObjectNew() {
-        this.doNaviService({
+        this.gfn_NaviService({
             type: 'standard__objectPage',
             attributes: {
                 objectApiName: 'Lead',
@@ -16,7 +16,7 @@ export default class LwcNavigationObject extends LwcComBase {
     }
 
     navigationObjectList(){
-        this.doNaviService({
+        this.gfn_NaviService({
             type: 'standard__objectPage',
             attributes: {
                 objectApiName: 'Lead',
