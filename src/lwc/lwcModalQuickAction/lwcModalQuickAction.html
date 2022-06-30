@@ -29,7 +29,7 @@
 
             <c-lwc-com-quick header={header}>
                 <div slot="header"></div>
-                <div class="slds-var-m-around_medium">
+                <div slot="content" class="slds-var-m-around_medium">
                     <lightning-record-edit-form object-api-name="Lead" onsuccess={handleSuccess}>
                         <lightning-input-field field-name="Name"></lightning-input-field>
                         <lightning-input-field required field-name="Title"></lightning-input-field>
@@ -47,6 +47,7 @@
                             label="생성">
                     </lightning-button>
                     <lightning-button
+                            class="slds-m-left_xx-small"
                             label="닫기"
                             variant="neutral"
                             onclick={handleCloseModal}>
