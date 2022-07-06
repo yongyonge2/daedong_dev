@@ -4,10 +4,10 @@
     <option name="connections">
       <list>
         <IlluminatedCloudConnection>
-          <option name="connectionName" value="daedong_dev" />
-          <option name="connectionType" value="OAUTH" />
+          <option name="connectionName" value="Busan" />
+          <option name="connectionType" value="MDAPI" />
           <option name="defaultModuleName" value="daedong_dev" />
-          <option name="offlineSymbolTablePath" value="$PROJECT_DIR$/IlluminatedCloud/daedong_dev/OfflineSymbolTable.zip" />
+          <option name="offlineSymbolTablePath" value="$PROJECT_DIR$/IlluminatedCloud/Busan/OfflineSymbolTable.zip" />
         </IlluminatedCloudConnection>
       </list>
     </option>

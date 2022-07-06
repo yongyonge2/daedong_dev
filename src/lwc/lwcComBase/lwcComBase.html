@@ -7,8 +7,28 @@
         <lightning-spinner alternative-text="Loading" variant="brand" size="middle">
         </lightning-spinner>
     </template>
-    <slot name="baseHeader"></slot>
-    <slot name="baseBody"></slot>
-    <slot name="baseFooter"></slot>
-    <slot name="baseQuickAction"></slot>
+
+    <template if:true={isRelatedComponent}>
+        <div class="container forceRelatedListSingleContainer">
+            <article class="slds-card slds-card_boundary headerBottomBorder forceRelatedListCardDesktop">
+                <slot name="baseHeader"></slot>
+                <slot name="baseBody"></slot>
+                <slot name="baseQuickAction"></slot>
+            </article>
+        </div>
+    </template>
+
+    <template if:true={isTabPageComponent}>
+        <div class="forceObjectHomeDesktop">
+            <div class="slds-card slds-grid slds-card_boundary slds-grid_vertical forceListViewManager">
+                <slot name="baseHeader"></slot>
+                <div class="slds-grid safari-workaround-anchor">
+                    <slot name="baseBody"></slot>
+                </div>
+                <slot name="baseQuickAction"></slot>
+            </div>
+        </div>
+
+    </template>
+
 </template>

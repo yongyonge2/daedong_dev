@@ -7,8 +7,6 @@ import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import { NavigationMixin } from 'lightning/navigation';
 import FORM_FACTOR from '@salesforce/client/formFactor';
 
-
-import getSobjectData from '@salesforce/apex/LwcComService.getSobjectData';
 import LightningAlert from 'lightning/alert';
 import LightningConfirm from 'lightning/confirm';
 import LightningPrompt from 'lightning/prompt';
@@ -22,20 +20,18 @@ export default class LwcComBase extends NavigationMixin(LightningElement) {
     @track isCommunity;
 
     // 데이터 속성
-    @track initData = {};
-    @track reqData = {};
-    @track resData = {};
-    @api recordList = {};
+    @api response = {};
 
     // Spinner 처리
     @api isSpinner = false;
 
-    @track labelMap = {};
+    // Page Type 처리
+    @api isRelatedComponent = false;
+    @api isTabPageComponent = false;
 
     connectedCallback() {
         this.init();
     }
-
     init() {
         this.isCommunity = this.gfn_IsCommunitySite();
     }
@@ -43,7 +39,6 @@ export default class LwcComBase extends NavigationMixin(LightningElement) {
     gfn_IsCommunitySite() {
         return new RegExp("/s/").test(window.location.toString());
     }
-
 
     gfn_ApexErrorHandle(error) {
         let errors = Array.isArray(error) || [error];
@@ -150,22 +145,11 @@ export default class LwcComBase extends NavigationMixin(LightningElement) {
      * @param helper
      */
 
-    async gfn_GetSobjectData(targetObjectList){
-        await getSobjectData({'targetObjectList': targetObjectList})
-            .then(result => {
-                this.labelMap = result;
-            })
-            .catch(error => {
-                this.gfn_ApexErrorHandle(error);
-            });
-    }
-
     gfn_NaviService(params) {
         this[NavigationMixin.Navigate](params);
     }
 
     /**************************************************** ***********************************************************/
-
 
     gfn_isEmpty(value) {
         if (value === undefined || value === null || value === "") {

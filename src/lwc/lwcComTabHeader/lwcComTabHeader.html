@@ -1,0 +1,73 @@
+<!--
+ - Created by ms on 2022-07-06.
+ -->
+
+<!-- Lwc Com Tab Header -->
+<template>
+    <div class="slds-page-header_object-home slds-page-header slds-shrink-none forceListViewManagerHeader">
+        <div class="slds-grid">
+            <div class="slds-has-flexi-truncate">
+                <div class="slds-media slds-no-space slds-grow">
+                    <!-- ICON -->
+                    <div class="slds-avatar slds-m-right_small">
+                        <lightning-icon icon-name={iconName}></lightning-icon>
+                    </div>
+
+                    <div class="slds-media__body slds-align-middle">
+                        <!-- TITLE -->
+                        <div class="slds-list_horizontal slds-wrap slds-line-height_reset">
+                            <span class="slds-var-p-right_x-small">{title}</span>
+                        </div>
+                        <!-- VIEW TYPE -->
+                        <div class="slds-grid slds-media__body">
+                            <div class="slds-button slds-button_reset slds-type-focus slds-truncate slds-page-header__title slds-text-color_default">
+                                <div class="triggerLinkTextAndIconWrapper slds-page-header__name">
+                                    <div class="slds-page-header__name-title">
+                                        <h1 class="slds-scrollable_none">
+                                            <span class="slds-page-header__title slds-truncate slds-p-right_xx-small">{type}</span>
+                                        </h1>
+                                    </div>
+                                    <div class="slds-page-header__name-switcher">
+                                        <div class="slds-dropdown-trigger slds-dropdown-trigger_click">
+                                            <slot name="listViewList"></slot>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slds-m-right_small">
+                                <div class="slds-p-left_xx-small">
+                                    <slot name="listViewPin"></slot>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slds-col slds-grid slds-p-bottom_xx-small slds-align-top slds-no-flex">
+                <slot name="headerButton"></slot>
+            </div>
+        </div>
+
+
+
+        <template if:true={resultInfo}>
+            <div class="slds-grid">
+                <div class="slds-col slds-align-bottom">
+                    <p class="slds-text-body_small">
+                        <span class="countSortedByFilteredBy">{resultInfo.count} items • </span>
+                        <span>Updated </span><lightning-relative-date-time value={resultInfo.lastModifiedDate}></lightning-relative-date-time>
+                    </p>
+                </div>
+                <div class="slds-col slds-no-flex slds-grid slds-align-bottom slds-shrink">
+                    <div class="search-in-list slds-m-left_large slds-is-relative">
+                        <slot name="headerSearchControl"></slot>
+                    </div>
+                </div>
+                <div class="slds-col slds-no-flex slds-grid slds-align-bottom">
+                    <slot name="headerMenuControl"></slot>
+                </div>
+            </div>
+        </template>
+    </div>
+</template>
