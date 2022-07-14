@@ -1,0 +1,40 @@
+<!--
+ - Created by ms on 2022-07-12.
+ -->
+
+<!-- Lwc Com Component Header -->
+<template>
+    <div class="slds-grid slds-page-header forceRelatedListCardHeader">
+        <header class="slds-media slds-media_center slds-has-flexi-truncate">
+
+            <!-- Icon -->
+            <div class="slds-media__figure stencil slds-avatar slds-avatar_small">
+                <div class="extraSmall forceEntityIcon">
+                    <lightning-icon icon-name={iconName}></lightning-icon>
+                </div>
+            </div>
+
+
+            <div class="slds-media__body slds-align-middle">
+                <h2 class="slds-card__header-title">
+
+                    <template if:true={hasUrl}>
+                        <a href={url} class="slds-card__header-link baseCard__header-title-container">
+                            <span title={title}>{title}</span>
+                        </a>
+                    </template>
+
+                    <template if:false={hasUrl}>
+                        <span title={title}>{title}</span>
+                    </template>
+
+                </h2>
+            </div>
+
+            <!-- Button -->
+            <div class="branding-actions slds-button-group oneActionsRibbon forceActionsContainer">
+                <slot name="headerButton"></slot>
+            </div>
+        </header>
+    </div>
+</template>

@@ -2,10 +2,16 @@
  * Created by lkj on 2022-06-21.
  */
 
-import {LightningElement, api, track} from 'lwc';
+import {LightningElement, api, track, wire} from 'lwc';
+
+import { getRecord } from 'lightning/uiRecordApi';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import { NavigationMixin } from 'lightning/navigation';
+import { CloseActionScreenEvent } from "lightning/actions";
+
 import FORM_FACTOR from '@salesforce/client/formFactor';
+import Id from '@salesforce/user/Id';
+import ProfileName from '@salesforce/schema/User.Profile.Name';
 
 import LightningAlert from 'lightning/alert';
 import LightningConfirm from 'lightning/confirm';
@@ -14,30 +20,37 @@ import LightningPrompt from 'lightning/prompt';
 export default class LwcComBase extends NavigationMixin(LightningElement) {
 
     // isDeskTop 여부
-    @track device = FORM_FACTOR;
-    @track isDeskTopOrTablet = FORM_FACTOR == 'Large' || FORM_FACTOR == 'Medium';
-    // 커뮤니티 여부
-    @track isCommunity;
+    device = FORM_FACTOR;
+    isDeskTopOrTablet = FORM_FACTOR == 'Large' || FORM_FACTOR == 'Medium';
 
-    // 데이터 속성
-    @api response = {};
+    // User Profile 처리
+    userId = Id;
+    userProfile;
 
     // Spinner 처리
     @api isSpinner = false;
 
     // Page Type 처리
-    @api isRelatedComponent = false;
-    @api isTabPageComponent = false;
+    @api isComponent = false;
+    @api isTab = false;
 
     connectedCallback() {
         this.init();
     }
+
     init() {
-        this.isCommunity = this.gfn_IsCommunitySite();
+
     }
 
-    gfn_IsCommunitySite() {
-        return new RegExp("/s/").test(window.location.toString());
+    @wire(getRecord, { recordId: Id, fields: [ProfileName] })
+    userDetails({ error, data }) {
+        if (error) {
+            this.gfn_ApexErrorHandle(error);
+        } else if (data) {
+            if (data.fields.Profile.value != null) {
+                this.userProfile = data.fields.Profile.value.fields.Name.value;
+            }
+        }
     }
 
     gfn_ApexErrorHandle(error) {
@@ -122,8 +135,8 @@ export default class LwcComBase extends NavigationMixin(LightningElement) {
         });
     }
 
-    gfn_ShowModal(modalId){
-        const modal = this.template.querySelector('[data-id='+modalId+']');
+    gfn_ShowModal(target){
+        const modal = this.template.querySelector('[data-id='+target+']');
         modal.show();
     }
 
@@ -164,4 +177,20 @@ export default class LwcComBase extends NavigationMixin(LightningElement) {
 
         return false;
     }
+
+    gfn_QaSubmit(event){
+        event.preventDefault();
+        const fields = event.detail.fields;
+        this.template.querySelector('lightning-record-edit-form').submit(fields);
+    }
+
+    gfn_QaSuccess(event){
+        this.gfn_ToastNotification('Success', event.detail.apiName + ' 생성 완료.', 'success');
+        this.gfn_QaClose();
+    }
+
+    gfn_QaClose() {
+        this.dispatchEvent(new CloseActionScreenEvent());
+    }
+
 }

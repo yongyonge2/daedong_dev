@@ -1,0 +1,38 @@
+<!--
+ - Created by ms on 2022-07-13.
+ -->
+
+<!-- Sample Component -->
+<template>
+    <c-lwc-com-base is-component="true">
+
+        &lt;!&ndash; HEAD &ndash;&gt;
+        <c-lwc-com-component-header slot="baseHeader" title={title} url={url} icon-name="standard:campaign_members">
+            <lightning-button-group slot="headerButton">
+                <lightning-button label="Custom Modal" variant="neutral" data-name="Modal" onclick={handleShowModal}></lightning-button>
+            </lightning-button-group>
+        </c-lwc-com-component-header>
+
+        &lt;!&ndash; BODY &ndash;&gt;
+        <c-lwc-com-component-body slot="baseBody">
+            <template if:true={campaignMembers}>
+                <lightning-datatable
+                        slot="bodyContent"
+                        key-field="Id"
+                        data={campaignMembers}
+                        columns={columns}
+                        hide-checkbox-column
+                        resize-column-disabled>
+                </lightning-datatable>
+                <a href="/lightning/r/Lead/{recordId}/related/CampaignMembers/view" slot="bodyFooter">
+                    <div class="slds-card__footer">
+                        <span class="view-all-label">View All</span>
+                    </div>
+                </a>
+            </template>
+        </c-lwc-com-component-body>
+
+        <!-- MODAL -->
+        <c-sample-custom-modal data-id="Modal" slot="baseModal"></c-sample-custom-modal>
+    </c-lwc-com-base>
+</template>

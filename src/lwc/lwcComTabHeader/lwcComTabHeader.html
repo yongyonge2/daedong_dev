@@ -13,7 +13,7 @@
                         <lightning-icon icon-name={iconName}></lightning-icon>
                     </div>
 
-                    <div class="slds-media__body slds-align-middle">
+                    <div class="slds-media__body slds-align-middle slds-is-relative">
                         <!-- TITLE -->
                         <div class="slds-list_horizontal slds-wrap slds-line-height_reset">
                             <span class="slds-var-p-right_x-small">{title}</span>
@@ -29,14 +29,14 @@
                                     </div>
                                     <div class="slds-page-header__name-switcher">
                                         <div class="slds-dropdown-trigger slds-dropdown-trigger_click">
-                                            <slot name="listViewList"></slot>
+                                            <slot name="headerViewList"></slot>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="slds-m-right_small">
                                 <div class="slds-p-left_xx-small">
-                                    <slot name="listViewPin"></slot>
+                                    <slot name="headerViewPin"></slot>
                                 </div>
                             </div>
                         </div>
@@ -51,23 +51,22 @@
 
 
 
-        <template if:true={resultInfo}>
+
             <div class="slds-grid">
-                <div class="slds-col slds-align-bottom">
-                    <p class="slds-text-body_small">
-                        <span class="countSortedByFilteredBy">{resultInfo.count} items • </span>
-                        <span>Updated </span><lightning-relative-date-time value={resultInfo.lastModifiedDate}></lightning-relative-date-time>
-                    </p>
-                </div>
+                <template if:true={resultInfo}>
+                    <div class="slds-col slds-align-bottom">
+                        <p class="slds-text-body_small">
+                            <span class="countSortedByFilteredBy">{resultInfo.count} items • </span>
+                            <span>Updated </span><lightning-relative-date-time value={resultInfo.lastModifiedDate}></lightning-relative-date-time>
+                        </p>
+                    </div>
+                </template>
                 <div class="slds-col slds-no-flex slds-grid slds-align-bottom slds-shrink">
                     <div class="search-in-list slds-m-left_large slds-is-relative">
-                        <slot name="headerSearchControl"></slot>
+                        <slot name="headerSearch"></slot>
                     </div>
                 </div>
-                <div class="slds-col slds-no-flex slds-grid slds-align-bottom">
-                    <slot name="headerMenuControl"></slot>
-                </div>
+                <slot name="headerMenu"></slot>
             </div>
-        </template>
     </div>
 </template>

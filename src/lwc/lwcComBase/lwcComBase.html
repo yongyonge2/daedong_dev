@@ -8,24 +8,24 @@
         </lightning-spinner>
     </template>
 
-    <template if:true={isRelatedComponent}>
+    <template if:true={isComponent}>
         <div class="container forceRelatedListSingleContainer">
             <article class="slds-card slds-card_boundary headerBottomBorder forceRelatedListCardDesktop">
                 <slot name="baseHeader"></slot>
                 <slot name="baseBody"></slot>
-                <slot name="baseQuickAction"></slot>
+                <slot name="baseModal"></slot>
             </article>
         </div>
     </template>
 
-    <template if:true={isTabPageComponent}>
+    <template if:true={isTab}>
         <div class="forceObjectHomeDesktop">
             <div class="slds-card slds-grid slds-card_boundary slds-grid_vertical forceListViewManager">
                 <slot name="baseHeader"></slot>
                 <div class="slds-grid safari-workaround-anchor">
                     <slot name="baseBody"></slot>
                 </div>
-                <slot name="baseQuickAction"></slot>
+                <slot name="baseModal"></slot>
             </div>
         </div>
 

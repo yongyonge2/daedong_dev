@@ -13,11 +13,16 @@ public virtual class I2ComClass {
         this.resData.put(key,value);
         return this;
     }
-    public I2ComClass setData(Map<String,Object> keyValues){
+    /*public I2ComClass setData(Map<String,Object> keyValues){
         this.resData.putAll(keyValues);
         return this;
     }
     public Object getData(String key){
         return this.resData.get(key);
+    }*/
+
+    public Integer getDataSize(String key){
+        List<sObject> sObj = (List<sObject>) this.resData.get(key);
+        return sObj.size();
     }
 }
