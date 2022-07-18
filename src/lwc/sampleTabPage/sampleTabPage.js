@@ -45,6 +45,7 @@ export default class SampleTabPage extends LwcComBase {
     refreshTable;
 
     @api showModal = false;
+
     connectedCallback() {
         this.doInit();
     }

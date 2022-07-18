@@ -37,6 +37,7 @@ export default class SampleComponent extends LwcComBase {
     columns = COLS;
     title;
     url;
+    iconName;
 
     connectedCallback() {
         this.doInit();
@@ -44,6 +45,7 @@ export default class SampleComponent extends LwcComBase {
 
     doInit(){
         this.url = '/lightning/r/Lead/'+ this.recordId +'/related/CampaignMembers/view'
+        this.iconName = 'standard:campaign_members';
     }
 
     @wire(getRecords,{recordId: '$recordId'})
@@ -72,6 +74,6 @@ export default class SampleComponent extends LwcComBase {
     }
 
     handleShowModal(event) {
-            this.gfn_ShowModal(event.target.dataset.name);
+        this.gfn_ShowModal(event.target.dataset.name);
     }
 }

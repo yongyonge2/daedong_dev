@@ -1,0 +1,30 @@
+<!--
+ - Created by ms on 2022-07-18.
+ -->
+
+<!-- Account Qa -->
+<template>
+    <template if:true={recordId}>
+        <lightning-quick-action-panel header="SearchContact">
+
+            <template if:true={contacts}>
+                <lightning-datatable
+                        key-field="Id"
+                        data={contacts}
+                        columns={columns}
+                        hide-checkbox-column>
+                </lightning-datatable>
+            </template>
+
+            <div slot="footer">
+                <lightning-button
+                        class="slds-m-left_xx-small"
+                        label="닫기"
+                        variant="neutral"
+                        onclick={handleClose}>
+                </lightning-button>
+            </div>
+
+        </lightning-quick-action-panel>
+    </template>
+</template>

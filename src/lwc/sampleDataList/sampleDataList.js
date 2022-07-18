@@ -10,8 +10,8 @@ export default class SampleDataList extends LwcComBase {
 
     handleLoad(){
         getRecords({ searchKey: '' })
-            .then(response => {
-                this.leads = response.resData.leads;
+            .then(data => {
+                this.leads = data.resData.leads;
             })
             .catch(error => {
                 this.gfn_ApexErrorHandle(error);
