@@ -163,5 +163,5 @@ global with sharing class IF_KR_POSTMAN_SF_0001 extends IF_Base {
         IF_Base.logEnd(outputRes.Header, inputReq.payload.ifAggregation, inputReq.payload.ifTotCnt, inputReq.payload.ifSplitCnt, inputReq.payload.ifSplitSeq, outputRes.payload.ifRcvCnt);
 
         return outputObj;
-    }
+    } 
 }
